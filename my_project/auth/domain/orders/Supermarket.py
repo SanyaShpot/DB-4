@@ -2,7 +2,7 @@ from __future__ import annotations
 from typing import Dict, Any
 from my_project import db
 from my_project.auth.domain.i_dto import IDto
-
+from my_project.auth.domain.orders.Chain import Chain
 
 class Supermarket(db.Model, IDto):
     __tablename__ = "supermarket"
@@ -13,12 +13,15 @@ class Supermarket(db.Model, IDto):
     opening_time = db.Column(db.Time, nullable=False)
     closing_time = db.Column(db.Time, nullable=False)
     average_visitors = db.Column(db.Integer)
+    
+    chain = db.relationship("Chain", backref="supermarkets")
 
     def put_into_dto(self) -> Dict[str, Any]:
         return {
             "id": self.id,
             "name": self.name,
             "chain_id": self.chain_id,
+            "chain": self.chain.put_into_dto() if self.chain else None,
             "area": float(self.area),
             "opening_time": str(self.opening_time),
             "closing_time": str(self.closing_time),
