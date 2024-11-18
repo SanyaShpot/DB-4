@@ -36,3 +36,8 @@ def update_panel_video(video_id: int) -> Response:
 def delete_panel_video(video_id: int) -> Response:
     panel_video_controller.delete(video_id)
     return make_response("Panel video deleted", HTTPStatus.NO_CONTENT)
+
+@panel_video_bp.get('/details')
+def get_panel_videos_with_details() -> Response:
+    panel_videos = panel_video_controller.find_all_with_details()
+    return make_response(jsonify(panel_videos), HTTPStatus.OK)

@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Dict
 from my_project.auth.dao.orders.PanelVideoDao import PanelVideoDAO
 from my_project.auth.domain.orders.PanelVideo import PanelVideo
 
@@ -17,3 +17,6 @@ class PanelVideoController:
 
     def delete(self, panel_id: int, video_id: int) -> None:
         self._dao.delete(panel_id, video_id)
+
+    def find_all_with_details(self) -> List[Dict]:
+        return self._dao.find_all_with_details()

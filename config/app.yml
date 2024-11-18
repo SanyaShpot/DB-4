@@ -7,11 +7,11 @@ development:
   DEBUG: True
 #  SQLALCHEMY_DATABASE_URI: 'sqlite://'
 #  SQLALCHEMY_DATABASE_URI: 'sqlite:///device_db.sqlite'
-  SQLALCHEMY_DATABASE_URI: 'mysql://root:root@localhost:3306/test'
+  SQLALCHEMY_DATABASE_URI: 'mysql://root:root@localhost:3306/lab4'
 
 production:
   <<: *common
-  SQLALCHEMY_DATABASE_URI: 'mysql://root:root@localhost/test'
+  SQLALCHEMY_DATABASE_URI: 'mysql://root:root@localhost/lab4'
 
 ADDITIONAL_CONFIG:
   MYSQL_ROOT_USER: root
