@@ -1105,7 +1105,6 @@ def init_autodoc_swagger(app: Flask) -> None:
         }
     })
     
-    # Add simple entity paths using the helper function
     simple_entities = [
         ("chain", "Chain", "Chains"),
         ("department", "Department", "Departments"),
