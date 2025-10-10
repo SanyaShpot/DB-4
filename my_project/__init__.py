@@ -22,7 +22,6 @@ SQLALCHEMY_DATABASE_URI = "SQLALCHEMY_DATABASE_URI"
 MYSQL_ROOT_USER = "MYSQL_ROOT_USER"
 MYSQL_ROOT_PASSWORD = "MYSQL_ROOT_PASSWORD"
 
-# Database
 db = SQLAlchemy()
 
 todos = {}
@@ -322,7 +321,6 @@ def init_autodoc_swagger(app: Flask) -> None:
                     "required": ["address"]
                 },
                 
-                # Panel Video schemas (association table)
                 "PanelVideo": {
                     "type": "object",
                     "properties": {
@@ -332,7 +330,6 @@ def init_autodoc_swagger(app: Flask) -> None:
                     "required": ["panel_id", "video_id"]
                 },
                 
-                # Simple entity schema (for Chain, Department, etc.)
                 "SimpleEntity": {
                     "type": "object",
                     "properties": {
@@ -349,11 +346,9 @@ def init_autodoc_swagger(app: Flask) -> None:
                     "required": ["name"]
                 },
                 
-                # Chain schema (references SimpleEntity)
                 "Chain": {"$ref": "#/components/schemas/SimpleEntity"},
                 "ChainInput": {"$ref": "#/components/schemas/SimpleEntityInput"},
                 
-                # Error schema
                 "Error": {
                     "type": "object",
                     "properties": {
@@ -391,12 +386,9 @@ def init_autodoc_swagger(app: Flask) -> None:
         ]
     }
 
-    # Add all the paths programmatically
     paths = swagger_template["paths"]
     
-    # Add main entity paths
     paths.update({
-        # Brand endpoints
         "/brand": {
             "get": {
                 "tags": ["Brands"],
@@ -528,7 +520,6 @@ def init_autodoc_swagger(app: Flask) -> None:
             }
         },
         
-        # Supermarket endpoints
         "/supermarket": {
             "get": {
                 "tags": ["Supermarkets"],
@@ -640,7 +631,6 @@ def init_autodoc_swagger(app: Flask) -> None:
             }
         },
         
-        # Advertisement Video endpoints
         "/advertisement-video": {
             "get": {
                 "tags": ["Advertisement Videos"],
@@ -746,7 +736,6 @@ def init_autodoc_swagger(app: Flask) -> None:
             }
         },
         
-        # Panel endpoints
         "/panel": {
             "get": {
                 "tags": ["Panels"],
@@ -851,7 +840,6 @@ def init_autodoc_swagger(app: Flask) -> None:
             }
         },
         
-        # Technical Specifications endpoints
         "/technical-specifications": {
             "get": {
                 "tags": ["Technical Specifications"],
@@ -956,7 +944,6 @@ def init_autodoc_swagger(app: Flask) -> None:
             }
         },
         
-        # Supermarket Address endpoints
         "/supermarket-address": {
             "get": {
                 "tags": ["Supermarket Addresses"],
@@ -1061,7 +1048,6 @@ def init_autodoc_swagger(app: Flask) -> None:
             }
         },
         
-        # Panel Video endpoints
         "/panel-video": {
             "get": {
                 "tags": ["Panel Videos"],
@@ -1142,9 +1128,7 @@ def _process_input_config(app_config: Dict[str, Any], additional_config: Dict[st
     :param app_config: Flask configuration
     :param additional_config: additional configuration
     """
-    # Get root username and password
     root_user = os.getenv(MYSQL_ROOT_USER, additional_config[MYSQL_ROOT_USER])
     root_password = os.getenv(MYSQL_ROOT_PASSWORD, additional_config[MYSQL_ROOT_PASSWORD])
-    # Set root username and password in app_config
     app_config[SQLALCHEMY_DATABASE_URI] = app_config[SQLALCHEMY_DATABASE_URI].format(root_user, root_password)
     pass
