@@ -576,7 +576,7 @@ def init_autodoc_swagger(app: Flask) -> None:
                         "schema": {"type": "integer"},
                         "description": "Supermarket identifier"
                     }
-                ],
+                ],#12312sdf
                 "responses": {
                     "200": {
                         "description": "Success",
