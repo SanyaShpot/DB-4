@@ -190,7 +190,6 @@ def init_autodoc_swagger(app: Flask) -> None:
         ],
         "components": {
             "schemas": {
-                # Brand schemas
                 "Brand": {
                     "type": "object",
                     "properties": {
@@ -207,7 +206,6 @@ def init_autodoc_swagger(app: Flask) -> None:
                     "required": ["name"]
                 },
                 
-                # Supermarket schemas
                 "Supermarket": {
                     "type": "object",
                     "properties": {
@@ -235,7 +233,6 @@ def init_autodoc_swagger(app: Flask) -> None:
                     "required": ["name"]
                 },
                 
-                # Advertisement Video schemas
                 "AdvertisementVideo": {
                     "type": "object",
                     "properties": {
@@ -258,7 +255,6 @@ def init_autodoc_swagger(app: Flask) -> None:
                     "required": ["name", "duration"]
                 },
                 
-                # Panel schemas
                 "Panel": {
                     "type": "object",
                     "properties": {
@@ -279,7 +275,6 @@ def init_autodoc_swagger(app: Flask) -> None:
                     "required": ["quantity"]
                 },
                 
-                # Technical Specifications schemas
                 "TechnicalSpecifications": {
                     "type": "object",
                     "properties": {
@@ -302,7 +297,6 @@ def init_autodoc_swagger(app: Flask) -> None:
                     "required": ["panel_id", "resolution_id", "screen_size_id", "refresh_rate_id"]
                 },
                 
-                # Supermarket Address schemas
                 "SupermarketAddress": {
                     "type": "object",
                     "properties": {
